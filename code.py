@@ -34,7 +34,7 @@ voltage = chan.value*(5000/1024)
 
 array = []
 
-for i in range(200)
+for i in range(200):
     if voltage < 400:
         array.append("preheating")
     else:
