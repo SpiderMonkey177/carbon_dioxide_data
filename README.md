@@ -7,7 +7,7 @@
 
 2. Connect the Pi-Hat and Raspberry Pi with the CO2 Sensor as displayed in the image below. 
 
-<img src='pip3 install adafruit-circuitpython-mcp3xxx' title='Connection' width='' alt='Walkthrough' />
+<img src='https://i.ibb.co/rQmbpD3/IMG-3261.jpg' title='Connection' width='' alt='Walkthrough' />
 
 3. Run "git clone" with it to retrieve this folder on your Raspberry pi. 
 
