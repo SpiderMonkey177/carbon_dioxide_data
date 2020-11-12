@@ -36,6 +36,7 @@ print('ADC Voltage: ' + str(chan.voltage) + 'V')
 
 
 voltage = chan.value*(5000/1024)
+print(voltage)
 
 #Convert the voltage to a PPM read. 
 
