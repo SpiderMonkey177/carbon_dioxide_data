@@ -49,6 +49,7 @@ for i in range(200):
     else:
         voltageDifference = voltage - 400
         concentration = voltageDifference*50/16
+        array.append(concentration)
 
 print(array)
 
