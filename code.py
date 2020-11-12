@@ -59,7 +59,10 @@ for i in range(10):
     print(voltage)
 
     if voltage < 400:
-        array.append("preheating")
+        data_set["CO2concentration"].append("Preheating")
+        data_set["VoltageDifference"].append("Preheating")
+        data_set["voltage"].append("Preheating")
+
     else:
         voltageDifference = voltage - 400
         concentration = (voltageDifference*50)/16
