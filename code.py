@@ -36,22 +36,36 @@ print('ADC Voltage: ' + str(chan.voltage) + 'V')
 #Convert the analog signal to a voltage. 
 
 
-voltage = chan.value
-print(voltage)
-
 #Convert the voltage to a PPM read. 
 
 #only if the voltage is larger than 400. 
 
-data_set = {"CO2concentration": [], "VoltageDifference": []}
+data_set = {"CO2concentration": [], "VoltageDifference": [], "voltage": []}
 
 for i in range(10):
+    spi = busio.SPI(clock=CLK, MISO=MISO, MOSI=MOSI)
+
+    # create the cs (chip select)
+    cs = digitalio.DigitalInOut(CS)
+
+    # create the mcp object
+    mcp = MCP.MCP3008(spi, cs)
+
+    # create an analog input channel on pin 0
+    chan = AnalogIn(mcp, MCP.P0)
+
+    voltage = chan.value
+
+    print(voltage)
+
     if voltage < 400:
         array.append("preheating")
     else:
         voltageDifference = voltage - 400
         concentration = (voltageDifference*50)/16
         data_set["CO2concentration"].append(concentration)
+        data_set["VoltageDifference"].append(voltageDifference)
+        data_set["voltage"].append(voltage)
     time.sleep(1)
 
 print(data_set)
