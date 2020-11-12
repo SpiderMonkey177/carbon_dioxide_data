@@ -50,7 +50,7 @@ for i in range(200):
         voltageDifference = voltage - 400
         concentration = voltageDifference*50/16
 
-
+print(array)
 
 
 
