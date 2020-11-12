@@ -54,7 +54,7 @@ for i in range(10):
     # create an analog input channel on pin 0
     chan = AnalogIn(mcp, MCP.P0)
 
-    voltage = chan.voltage
+    voltage = chan.voltage * 1000
 
     print(voltage)
 
