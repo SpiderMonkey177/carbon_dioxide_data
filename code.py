@@ -42,7 +42,7 @@ print(voltage)
 
 #only if the voltage is larger than 400. 
 
-array = []
+data_set = {"CO2concentration": [], "VoltageDifference": []}
 
 for i in range(200):
     if voltage < 400:
@@ -50,10 +50,11 @@ for i in range(200):
     else:
         voltageDifference = voltage - 400
         concentration = voltageDifference*50/16
-        array.append(concentration)
+        data_set["CO2concentration"] = concentration
+    
+    delay(100)
 
 print(array)
-
 
 
 # int voltage_diference=voltage-400;
