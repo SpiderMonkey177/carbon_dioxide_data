@@ -45,7 +45,7 @@ print(voltage)
 
 data_set = {"CO2concentration": [], "VoltageDifference": []}
 
-for i in range(200):
+for i in range(10):
     if voltage < 400:
         array.append("preheating")
     else:
