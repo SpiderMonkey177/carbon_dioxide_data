@@ -36,7 +36,7 @@ print('ADC Voltage: ' + str(chan.voltage) + 'V')
 #Convert the analog signal to a voltage. 
 
 
-voltage = chan.value*(5000/1024)
+voltage = chan.value
 print(voltage)
 
 #Convert the voltage to a PPM read. 
@@ -50,8 +50,8 @@ for i in range(10):
         array.append("preheating")
     else:
         voltageDifference = voltage - 400
-        concentration = voltageDifference*50/16
-        data_set["CO2concentration"] = concentration
+        concentration = (voltageDifference*50)/16
+        data_set["CO2concentration"].append(concentration)
     time.sleep(1)
 
 print(data_set)
