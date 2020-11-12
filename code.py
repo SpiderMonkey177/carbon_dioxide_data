@@ -3,6 +3,7 @@ import digitalio
 import board
 import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
+import time
 
 # create the spi bus
 
@@ -51,10 +52,9 @@ for i in range(200):
         voltageDifference = voltage - 400
         concentration = voltageDifference*50/16
         data_set["CO2concentration"] = concentration
-    
-    delay(100)
+    time.sleep(1)
 
-print(array)
+print(data_set)
 
 
 # int voltage_diference=voltage-400;
