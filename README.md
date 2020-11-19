@@ -16,5 +16,7 @@ $` sudo pip3 install adafruit-circuitpython-mcp3xxx
 
 $` python3 code.py
 
-5. You should retrieve a JSON Dictionary with the milli-voltage count and the CO2 Concentration.
+5. Either enter if you have a "Pi-0" or "Full-sizedPi". This is **case-sensitive**. 
+
+6. You should retrieve a JSON Dictionary with the milli-voltage count and the CO2 Concentration.
 
