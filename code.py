@@ -7,24 +7,45 @@ import time
 
 # create the spi bus
 
-CLK = board.D21
+print("What device are you using - Pi-0 or Full-sizedPi")
+print("Either enter Pi-0 or Full-sizedPi. Note that this is case-sensitive")
 
-MISO = board.D19
+user_input = input()
 
-MOSI = board.D20
+if (user_input == "Pi-0"):
+    CLK = board.D21
 
-CS = board.D26
+    MISO = board.D19
 
-spi = busio.SPI(clock=CLK, MISO=MISO, MOSI=MOSI)
+    MOSI = board.D20
 
-# create the cs (chip select)
-cs = digitalio.DigitalInOut(CS)
+    CS = board.D26
 
-# create the mcp object
-mcp = MCP.MCP3008(spi, cs)
+    spi = busio.SPI(clock=CLK, MISO=MISO, MOSI=MOSI)
 
-# create an analog input channel on pin 0
-chan = AnalogIn(mcp, MCP.P0)
+    # create the cs (chip select)
+    cs = digitalio.DigitalInOut(CS)
+
+    # create the mcp object
+    mcp = MCP.MCP3008(spi, cs)
+
+    # create an analog input channel on pin 0
+    chan = AnalogIn(mcp, MCP.P0)
+
+elif (user_input == "Full-sizedPi"):
+    CLK = 18
+    MISO = 23
+    MOSI = 24
+    CS = 25
+
+    spi = busio.SPI(clock=CLK, MISO=MISO, MOSI=MOSI)
+
+    cs = digitalio.DigitalInOut(CS)
+    mcp = MCP.MCP3008(spi, cs)
+    chan = AnalogIn(mcp, MCP.P0)
+
+
+
 
 print('Raw ADC Value: ', chan.value)
 print('ADC Voltage: ' + str(chan.voltage) + 'V')
@@ -43,16 +64,6 @@ print('ADC Voltage: ' + str(chan.voltage) + 'V')
 data_set = {"CO2concentration": [], "VoltageDifference": [], "voltage": []}
 
 for i in range(10):
-    spi = busio.SPI(clock=CLK, MISO=MISO, MOSI=MOSI)
-
-    # create the cs (chip select)
-    cs = digitalio.DigitalInOut(CS)
-
-    # create the mcp object
-    mcp = MCP.MCP3008(spi, cs)
-
-    # create an analog input channel on pin 0
-    chan = AnalogIn(mcp, MCP.P0)
 
     voltage = chan.voltage * 1000
 
@@ -80,5 +91,3 @@ print(data_set)
 #create a pandas dataframe and append it on the dataframe. 
 
 #delay it 1000. 
-
-
